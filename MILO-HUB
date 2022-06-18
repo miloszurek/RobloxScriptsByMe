@@ -1,5 +1,4 @@
-if game.GameId == 3620011279 then
-    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/un-named%20backups/jans", true))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/un-named%20backups/jans", true))()
 
 local Window = Library:CreateWindow("Milo-Hub")
 local folder = Window:AddFolder('Raise A floppa 2')
@@ -24,7 +23,13 @@ folder:AddToggle({text = "AutoCLick FLoppa", callback = function(click)
 end
 end
 end})
-Library:Init()
-elseif game.GameId == 91 then
-print('balls')
+folder:AddToggle({text = "AutoHappy Floppa", callback = function(happy)
+_G.AutoHappiness = happy
+while wait() do
+    if _G.AutoHappiness == true then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Floppa.HumanoidRootPart.CFrame
+        fireproximityprompt(game:GetService("Workspace").Floppa.HumanoidRootPart.ProximityPrompt)
 end
+end
+end})
+Library:Init()
