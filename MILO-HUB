@@ -32,4 +32,39 @@ while wait() do
 end
 end
 end})
+folder:AddToggle({text = "AutoClean Floppa Shit", callback = function(shit)
+_G.CleanShit = shit
+while wait() do
+    if _G.CleanShit == true then
+        for i,v in pairs(game:GetService("Workspace")["Key Parts"]:GetDescendants()) do
+            if v.Name == 'Poop' then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.PoopPart.CFrame
+                fireproximityprompt(v.ProximityPrompt)
+end
+end
+end
+end
+end})
+folder:AddToggle({text = "Auto Fill floppa bowl", callback = function(hunger)
+_G.Autofeedfloppa = hunger
+while wait() do
+    if _G.Autofeedfloppa == true then
+        if game:GetService("Workspace")["Key Parts"].Bowl.Part.Transparency == 1 then
+            local args = {
+    [1] = "Floppa Food",
+    [2] = "the_interwebs"
+}
+
+game:GetService("ReplicatedStorage").Events.Unlock:FireServer(unpack(args))
+wait(0.4)
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").BESTSKINBOICOUNTER.Backpack["Floppa Food"])
+wait(0.5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Key Parts"].Bowl.Part.CFrame
+wait(1.5)
+fireproximityprompt(game:GetService("Workspace")["Key Parts"].Bowl.Part.ProximityPrompt)
+wait(0.1)
+end
+end
+end
+end})
 Library:Init()
