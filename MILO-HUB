@@ -1,0 +1,30 @@
+if game.GameId == 3620011279 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/un-named%20backups/jans", true))()
+
+local Window = Library:CreateWindow("Milo-Hub")
+local folder = Window:AddFolder('Raise A floppa 2')
+folder:AddToggle({text = "AutoCollect Cash", callback = function(cash)  
+    _G.CollectCash = cash
+    while wait() do
+if _G.CollectCash == true then
+for i,v in pairs(game.Workspace:GetDescendants()) do
+if v.Name == 'Money'  then
+    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart,v,0)
+    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart,v,1)
+end
+end
+end
+end
+end})
+folder:AddToggle({text = "AutoCLick FLoppa", callback = function(click)
+    _G.ClickFloppa = click
+    while wait() do
+        if _G.ClickFloppa == true then
+            fireclickdetector(game:GetService("Workspace").Floppa.ClickDetector)
+end
+end
+end})
+Library:Init()
+elseif game.GameId == 91 then
+print('balls')
+end
