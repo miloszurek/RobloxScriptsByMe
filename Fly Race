@@ -1,0 +1,121 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+local key = 'ifuckbigblackcock'
+--HotNiggerTwerk
+
+local Roblox = Instance.new("ScreenGui")
+local Panel = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local TextBox = Instance.new("TextBox")
+local TextButton = Instance.new("TextButton")
+
+--Properties:
+
+Roblox.Name = "Roblox"
+Roblox.Parent = game.CoreGui
+Roblox.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Panel.Name = "Panel"
+Panel.Parent = Roblox
+Panel.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+Panel.Position = UDim2.new(0.322183937, 0, 0.490533501, 0)
+Panel.Size = UDim2.new(0, 558, 0, 431)
+
+TextLabel.Parent = Panel
+TextLabel.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+TextLabel.Size = UDim2.new(0, 557, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Welcome To Milo Loader"
+TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+TextLabel_2.Parent = Panel
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
+TextLabel_2.Position = UDim2.new(0, 0, 0.115885369, 0)
+TextLabel_2.Size = UDim2.new(0, 83, 0, 79)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = "Game:".."gra name"
+TextLabel_2.TextColor3 = Color3.fromRGB(220, 0, 0)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextWrapped = true
+
+TextBox.Parent = Panel
+TextBox.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+TextBox.Position = UDim2.new(0.320788532, 0, 0.477958232, 0)
+TextBox.Size = UDim2.new(0, 200, 0, 50)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextScaled = true
+TextBox.TextSize = 14.000
+TextBox.TextWrapped = true
+
+TextButton.Parent = Panel
+TextButton.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
+TextButton.Position = UDim2.new(0.424731195, 0, 0.737819016, 0)
+TextButton.Size = UDim2.new(0, 84, 0, 50)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "Check Key"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+TextButton.MouseButton1Down:connect(function()
+	if TextBox.Text == key then
+		Panel.Visible = false
+		loadstring(game:HttpGet("https://versus-airlines.cf/V3/Loader.lua"))()
+	end
+end)
+
+-- Scripts:
+
+local function LBOVHIP_fake_script() -- Panel.DragScript 
+	local script = Instance.new('LocalScript', Panel)
+
+	--Not made by me, check out this video: https://www.youtube.com/watch?v=z25nyNBG7Js&t=22s
+	--Put this inside of your Frame and configure the speed if you would like.
+	--Enjoy! Credits go to: https://www.youtube.com/watch?v=z25nyNBG7Js&t=22s
+	
+	local UIS = game:GetService('UserInputService')
+	local frame = script.Parent
+	local dragToggle = nil
+	local dragSpeed = 0.25
+	local dragStart = nil
+	local startPos = nil
+	
+	local function updateInput(input)
+		local delta = input.Position - dragStart
+		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+	end
+	
+	frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+			dragToggle = true
+			dragStart = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			if dragToggle then
+				updateInput(input)
+			end
+		end
+	end)
+	
+end
+coroutine.wrap(LBOVHIP_fake_script)()
